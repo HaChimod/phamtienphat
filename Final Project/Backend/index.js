@@ -2,39 +2,31 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const dbConnect = require("./db/dbConnect");
-const session = require("express-session");
+const path = require("path");
 
 dbConnect();
+
 const requireLogin = require("./routes/requireLogin");
 const UserRouter = require("./routes/UserRouter");
 const PhotoRouter = require("./routes/PhotoRouter");
 const adminRoute = require("./routes/admin");
 const UploadPhotoRouter = require("./routes/UploadPhotoRouter");
-// const CommentRouter = require("./routes/CommentRouter");
-// app.use(cors());
-const path = require("path");
+
 app.use("/images", express.static(path.join(__dirname, "images")));
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
-app.use(express.json());
-app.use(
-  session({
-    secret: "mySecretKey12345",
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false },
-    maxAge: 24 * 60 * 60 * 1000,
+    origin: "https://6zj2pc-3000.csb.app",
+    credentials: true, // vẫn để true, không ảnh hưởng
   })
 );
 
+app.use(express.json());
+
 app.use("/admin", adminRoute);
-app.use(requireLogin);
-app.use("/api/user", UserRouter);
-app.use("/api/photo", PhotoRouter);
+// app.use(requireLogin);
+app.use("/user", UserRouter);
+app.use("/photo", PhotoRouter);
 app.use("/photos", UploadPhotoRouter);
 app.get("/", (request, response) => {
   response.send({ message: "Hello from photo-sharing app API!" });

@@ -4,6 +4,7 @@ const requireLogin = require("./requireLogin");
 const User = require("../db/userModel");
 router.get("/list", async (req, res) => {
   try {
+    console.log("🔥 HIT /api/user/list");
     const users = await User.find({})
       .select("_id first_name last_name")
       .sort({ last_name: 1, first_name: 1 })

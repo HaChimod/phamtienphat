@@ -71,7 +71,7 @@ function UserPhotos({ newPhotoFromTopBar }) {
       {photos.map((photo) => (
         <Box key={photo._id} mb={3}>
           <img
-            src={`http://localhost:8081/images/${photo.file_name}`}
+            src={`https://6zj2pc-8081.csb.app/images/${photo.file_name}`}
             alt={photo.file_name}
             style={{ maxWidth: "100%", borderRadius: "5px" }}
           />

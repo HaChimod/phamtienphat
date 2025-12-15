@@ -22,7 +22,7 @@ function LoginRegister({ setUser }) {
   // -------------------- LOGIN HANDLER --------------------
   const handleLogin = async () => {
     try {
-      const res = await fetch("http://localhost:8081/admin/login", {
+      const res = await fetch("https://6zj2pc-8081.csb.app/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -54,7 +54,7 @@ function LoginRegister({ setUser }) {
     }
 
     try {
-      const res = await fetch("http://localhost:8081/admin/user", {
+      const res = await fetch("https://6zj2pc-8081.csb.app/admin/user", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reg),
