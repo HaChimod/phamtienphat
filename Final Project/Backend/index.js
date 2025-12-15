@@ -22,7 +22,7 @@ app.use(
 );
 
 app.use(express.json());
-
+console.log("🔥🔥🔥 BACKEND VERSION 999 🔥🔥🔥");
 app.use("/admin", adminRoute);
 // app.use(requireLogin);
 app.use("/user", UserRouter);
